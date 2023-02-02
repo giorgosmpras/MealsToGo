@@ -4,6 +4,7 @@ import { Navigation } from "./src/infastructure/navigation";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
+// just for git
 import {
   useFonts as useOswald,
   Oswald_400Regular,
