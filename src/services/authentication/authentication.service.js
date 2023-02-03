@@ -1,4 +1,4 @@
 import firebase from "firebase/compat/app";
 
-const loginRequest = (email, password) =>
+export const loginRequest = (email, password) =>
   firebase.auth().signInWithEmailAndPassword(email, password);
