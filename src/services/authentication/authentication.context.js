@@ -23,6 +23,7 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
 
   const onRegister = (email, password, repeatedPassword) => {
+    setIsLoading(true);
     if (password !== repeatedPassword) {
       setError("Passwords dont match");
       return;
