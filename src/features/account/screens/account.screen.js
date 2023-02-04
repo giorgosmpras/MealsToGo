@@ -6,13 +6,15 @@ import {
   AuthButton,
 } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { RegisterScreen } from "../screens/register.screen";
-import { LoginScreen } from "../screens/login.screen";
+import { Text } from "../../../components/typography/text.component";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <Text variant="hint" style={{ fontSize: 30 }}>
+        MealsToGo
+      </Text>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"

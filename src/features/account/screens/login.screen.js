@@ -5,12 +5,14 @@ import {
   AccountContainer,
   AuthButton,
   AuthInput,
+  ErrorContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { AccountScreen } from "./account.screen";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, error } = useContext(AuthenticationContext);
@@ -37,11 +39,13 @@ export const LoginScreen = () => {
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
-        {error && (
-          <Spacer size="large">
-            <Text variant="error">{error}</Text>
-          </Spacer>
-        )}
+        <ErrorContainer>
+          {error && (
+            <Spacer size="large">
+              <Text variant="error">{error}</Text>
+            </Spacer>
+          )}
+        </ErrorContainer>
         <Spacer size="large">
           <AuthButton
             icon="lock-open-outline"
@@ -52,6 +56,11 @@ export const LoginScreen = () => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
+      <Spacer size="large">
+        <AuthButton mode="contained" onPress={navigation.goBack}>
+          Back
+        </AuthButton>
+      </Spacer>
     </AccountBackground>
   );
 };
