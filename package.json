@@ -23,6 +23,7 @@
     "expo": "^47.0.13",
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.16.0",
+    "lottie-react-native": "5.1.4",
     "prettier": "^2.8.3",
     "react": "18.1.0",
     "react-native": "0.70.5",
