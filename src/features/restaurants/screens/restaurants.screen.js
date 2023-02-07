@@ -3,6 +3,7 @@ import { RestaurantInfoCard } from "../components/restaurants-info-card.componen
 import { RestaurantList, Loading, LoadingContainer } from "./restaurants.style";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { Search } from "../components/search.component";
@@ -30,6 +31,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           <Loading size={50} animating={true} color={"tomato"} />
         </LoadingContainer>
       ) : null}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -42,7 +44,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
