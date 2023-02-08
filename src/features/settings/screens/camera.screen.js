@@ -15,6 +15,13 @@ export const CameraScreen = () => {
 
   const cameraRef = useRef();
 
+  const snap = async () => {
+    if (cameraRef) {
+      const photo = await cameraRef.current.takePictureAsync();
+      console.log(photo);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -29,24 +36,13 @@ export const CameraScreen = () => {
     return <Text>No access to camera</Text>;
   }
 
-  const toggleCameraType = () => {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  };
-
   return (
-    // <View style={styles.container}>
-    <ProfileCamera
-      ref={(camera) => (cameraRef.current = camera)}
-      type={Camera.Constants.Type.front}
-    >
-      {/* <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-        </View> */}
-    </ProfileCamera>
-    // {/* </View> */}
+    <TouchableOpacity onPress={snap}>
+      <ProfileCamera
+        ref={(camera) => (cameraRef.current = camera)}
+        type={Camera.Constants.Type.front}
+        ratio={"16:9"}
+      />
+    </TouchableOpacity>
   );
 };
